@@ -38,10 +38,7 @@ public class ProductoServiceImpl implements ProductoService {
         return productoRepository.findByNombre(producto);
     }
 
-    @Override
-    public void EliminarProducto(Integer productoId) {
-        productoRepository.deleteById(productoId);
-    }
+
 
     @Override
     public Iterable<Producto> obtenerProductos() {

@@ -13,8 +13,6 @@ public interface ProductoService {
 
     public Producto obtenerProducto(String producto);
 
-    public void EliminarProducto(Integer productoId);
-
     Iterable<Producto> obtenerProductos();
 
     Optional<Producto> obtenerProductoById(Integer productoId);

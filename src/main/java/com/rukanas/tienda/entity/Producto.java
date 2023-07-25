@@ -1,6 +1,9 @@
 package com.rukanas.tienda.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "productos")
@@ -15,7 +18,12 @@ public class Producto {
 
     private Integer stock;
 
+    @OneToMany(mappedBy = "producto")
+    @JsonIgnore
+    private List<Detalle> detalleList;
+
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "categoria")
     private Categoria categoria;
 
@@ -57,5 +65,13 @@ public class Producto {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public List<Detalle> getDetalleList() {
+        return detalleList;
+    }
+
+    public void setDetalleList(List<Detalle> detalleList) {
+        this.detalleList = detalleList;
     }
 }
