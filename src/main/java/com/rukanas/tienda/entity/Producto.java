@@ -1,10 +1,23 @@
 package com.rukanas.tienda.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "productos")
-public class Producto {
+public class Producto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -15,9 +28,11 @@ public class Producto {
 
     private Integer stock;
 
+
     @ManyToOne
     @JoinColumn(name = "categoria")
     private Categoria categoria;
+
 
     public Integer getId() {
         return id;
